@@ -1,0 +1,1 @@
+http\://www.springframework.org/schema/social/qq=org.springframework.social.qq.config.xml.QQNamespaceHandler

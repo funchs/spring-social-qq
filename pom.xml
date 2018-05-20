@@ -5,7 +5,7 @@
 
 	<groupId>org.springframework.social</groupId>
 	<artifactId>spring-social-qq</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0.RELEASE</version>
 	<packaging>jar</packaging>
 
 	<name>Spring Social QQ extension</name>
@@ -69,13 +69,6 @@
 		</repository>
 	</repositories>
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.2.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -83,6 +76,7 @@
 		<spring.version>4.3.8.RELEASE</spring.version>
 		<spring.social.version>1.1.4.RELEASE</spring.social.version>
 		<jackson.version>2.6.1</jackson.version>
+		<fastjson.version>1.2.13</fastjson.version>
 	</properties>
 
 	<dependencies>
@@ -117,6 +111,11 @@
 			<version>${jackson.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>${spring.version}</version>
@@ -144,6 +143,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>

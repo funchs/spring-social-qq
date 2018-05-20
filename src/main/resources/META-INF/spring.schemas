@@ -1,0 +1,2 @@
+http\://www.springframework.org/schema/social/spring-social-qq.xsd=org/springframework/social/qq/config/xml/spring-social-qq.xsd
+http\://www.springframework.org/schema/social/spring-social-qq-1.0.xsd=org/springframework/social/qq/config/xml/spring-social-qq.xsd
