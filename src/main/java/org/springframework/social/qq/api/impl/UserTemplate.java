@@ -47,7 +47,7 @@ public class UserTemplate extends AbstractOAuth2ApiBinding implements UserOperat
         params.set("oauth_consumer_key", appId);
         params.set("openid", openId);
         params.set("format", "json");
-        String userInfoJson = this.getRestTemplate().getForObject(URIBuilder.fromUri(URI_USER_INFO).queryParams(params).toString(), String.class);
+        String userInfoJson = this.getRestTemplate().getForObject(URIBuilder.fromUri(URI_USER_INFO).queryParams(params).build(), String.class);
         if (StringUtils.isEmpty(userInfoJson)) {
             return null;
         }

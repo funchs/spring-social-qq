@@ -22,7 +22,7 @@ public class QQServiceProvider extends AbstractOAuth2ServiceProvider<QQ> {
     }
 
     private static OAuth2Template getOAuth2Template(String appId, String appSecret) {
-        OAuth2Template oAuth2Template = new OAuth2Template(appId, appSecret, URI_AUTHORIZE, URI_ACCESS_TOKEN);
+        QQOAuth2Template oAuth2Template = new QQOAuth2Template(appId, appSecret);
         oAuth2Template.setUseParametersForClientAuthentication(true);
         return oAuth2Template;
     }

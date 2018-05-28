@@ -3,8 +3,6 @@ package org.springframework.social.qq.config.xml;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.social.config.xml.AbstractProviderConfigBeanDefinitionParser;
-import org.springframework.social.facebook.connect.FacebookConnectionFactory;
-import org.springframework.social.facebook.security.FacebookAuthenticationService;
 import org.springframework.social.qq.config.support.QQApiHelper;
 import org.springframework.social.qq.connect.QQConnectionFactory;
 import org.springframework.social.qq.security.QQAuthenticationService;
@@ -28,10 +26,7 @@ public class QQConfigBeanDefinitionParser extends AbstractProviderConfigBeanDefi
 
     @Override
     protected BeanDefinition getConnectionFactoryBeanDefinition(String appId, String appSecret, Map<String, Object> allAttributes) {
-        BeanDefinitionBuilder builder = BeanDefinitionBuilder.genericBeanDefinition(FacebookConnectionFactory.class).addConstructorArgValue(appId).addConstructorArgValue(appSecret);
-        if (allAttributes.containsKey("app-namespace")) {
-            builder.addConstructorArgValue(allAttributes.get("app-namespace"));
-        }
+        BeanDefinitionBuilder builder = BeanDefinitionBuilder.genericBeanDefinition(QQConnectionFactory.class).addConstructorArgValue(appId).addConstructorArgValue(appSecret);
         return builder.getBeanDefinition();
     }
 

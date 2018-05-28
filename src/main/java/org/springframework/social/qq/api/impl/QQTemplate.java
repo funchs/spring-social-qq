@@ -3,6 +3,7 @@ package org.springframework.social.qq.api.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.social.oauth2.AbstractOAuth2ApiBinding;
+import org.springframework.social.oauth2.TokenStrategy;
 import org.springframework.social.qq.api.QQ;
 import org.springframework.social.qq.api.UserOperations;
 import org.springframework.social.qq.api.model.UserInfo;
@@ -29,7 +30,7 @@ public class QQTemplate extends AbstractOAuth2ApiBinding implements QQ {
     private static Pattern PATTERN_WITH_OPENID = Pattern.compile("\"openid\"\\s*:\\s*\"(\\w+)\"");
 
     public QQTemplate(String appId, String accessToken) {
-        super(accessToken);
+        super(accessToken, TokenStrategy.ACCESS_TOKEN_PARAMETER);
         this.appId = appId;
         this.accessToken = accessToken;
         this.openId = this.getOpenId();
@@ -49,7 +50,7 @@ public class QQTemplate extends AbstractOAuth2ApiBinding implements QQ {
     private String getOpenId() {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.set("access_token", accessToken);
-        String openIdJson = this.getRestTemplate().getForObject(URIBuilder.fromUri(URI_ME).queryParams(params).toString(), String.class);
+        String openIdJson = this.getRestTemplate().getForObject(URIBuilder.fromUri(URI_ME).queryParams(params).build(), String.class);
         Matcher matcher = PATTERN_WITH_OPENID.matcher(openIdJson);
         if (matcher.find()) {
             return matcher.group(1);

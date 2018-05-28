@@ -13,8 +13,4 @@ public class QQConnectionFactory extends OAuth2ConnectionFactory<QQ> {
     public QQConnectionFactory(String appId, String appSecret) {
         super("qq", new QQServiceProvider(appId, appSecret), new QQAdapter());
     }
-
-    public QQConnectionFactory(String providerId, OAuth2ServiceProvider<QQ> serviceProvider, ApiAdapter<QQ> apiAdapter) {
-        super(providerId, serviceProvider, apiAdapter);
-    }
 }

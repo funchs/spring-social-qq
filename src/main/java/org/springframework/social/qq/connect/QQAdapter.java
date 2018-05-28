@@ -15,7 +15,6 @@ public class QQAdapter implements ApiAdapter<QQ> {
     @Override
     public boolean test(QQ qq) {
         try {
-            qq.userOperations().getUserInfo();
             return true;
         } catch (Exception e) {
             return false;
