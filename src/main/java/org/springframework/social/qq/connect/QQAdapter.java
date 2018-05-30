@@ -26,7 +26,7 @@ public class QQAdapter implements ApiAdapter<QQ> {
         UserInfo userInfo = qq.userOperations().getUserInfo();
         connectionValues.setProviderUserId(userInfo.getOpenid());
         connectionValues.setDisplayName(userInfo.getName());
-        connectionValues.setImageUrl(userInfo.getHeadImg());
+        connectionValues.setImageUrl(userInfo.getFigureUrl());
         connectionValues.setProfileUrl(null);
     }
 

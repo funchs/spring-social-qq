@@ -1,5 +1,8 @@
 package org.springframework.social.qq.api.model;
 
+/**
+ * @author renq
+ */
 public class UserInfo {
     /**
      * 用户名
@@ -8,7 +11,7 @@ public class UserInfo {
     /**
      * 用户头像
      */
-    private String headImg;
+    private String figureUrl;
     /**
      * 用户性别
      */
@@ -38,12 +41,12 @@ public class UserInfo {
         this.name = name;
     }
 
-    public String getHeadImg() {
-        return headImg;
+    public String getFigureUrl() {
+        return figureUrl;
     }
 
-    public void setHeadImg(String headImg) {
-        this.headImg = headImg;
+    public void setFigureUrl(String figureUrl) {
+        this.figureUrl = figureUrl;
     }
 
     public String getSex() {

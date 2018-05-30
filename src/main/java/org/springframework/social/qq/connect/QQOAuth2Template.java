@@ -1,16 +1,12 @@
 package org.springframework.social.qq.connect;
 
-import com.alibaba.fastjson.JSONObject;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.social.oauth2.AccessGrant;
 import org.springframework.social.oauth2.OAuth2Template;
 import org.springframework.util.MultiValueMap;
-import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
 import java.nio.charset.Charset;
-import java.util.Map;
-import java.util.regex.Pattern;
 
 /**
  * @author renq

@@ -3,7 +3,6 @@ package org.springframework.social.qq.api.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.social.oauth2.AbstractOAuth2ApiBinding;
-import org.springframework.social.oauth2.TokenStrategy;
 import org.springframework.social.qq.api.QQ;
 import org.springframework.social.qq.api.UserOperations;
 import org.springframework.social.qq.api.model.UserInfo;

@@ -6,11 +6,12 @@ import org.springframework.social.oauth2.OAuth2Template;
 import org.springframework.social.qq.api.QQ;
 import org.springframework.social.qq.api.impl.QQTemplate;
 
+/**
+ * @author renq
+ */
 public class QQServiceProvider extends AbstractOAuth2ServiceProvider<QQ> {
 
     private String appId;
-    private static final String URI_AUTHORIZE = "https://graph.qq.com/oauth2.0/authorize";
-    private static final String URI_ACCESS_TOKEN = "https://graph.qq.com/oauth2.0/token";
 
     public QQServiceProvider(OAuth2Operations oauth2Operations) {
         super(oauth2Operations);
