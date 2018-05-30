@@ -47,7 +47,7 @@ public class QQAutoConfiguration {
 		@Bean
 		@ConditionalOnMissingBean(QQ.class)
 		@Scope(value = "request", proxyMode = ScopedProxyMode.INTERFACES)
-		public QQ linkedin(ConnectionRepository repository) {
+		public QQ qq(ConnectionRepository repository) {
 			Connection<QQ> connection = repository
 					.findPrimaryConnection(QQ.class);
 			return connection != null ? connection.getApi() : null;
