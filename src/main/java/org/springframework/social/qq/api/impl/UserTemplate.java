@@ -58,9 +58,9 @@ public class UserTemplate extends AbstractOAuth2ApiBinding implements UserOperat
             if (jsonObject.containsKey(ret)) {
                 if (jsonObject.getIntValue(ret) == 0) {
                     userInfo.setName(jsonObject.containsKey("nickname") ? jsonObject.getString("nickname") : "");
-                    userInfo.setHeadImg(jsonObject.containsKey("figureurl_qq_2") ? jsonObject.getString("figureurl_qq_2") : "");
-                    if (StringUtils.isEmpty(userInfo.getHeadImg())) {
-                        userInfo.setHeadImg(jsonObject.containsKey("figureurl_qq_1") ? jsonObject.getString("figureurl_qq_1") : "");
+                    userInfo.setFigureUrl(jsonObject.containsKey("figureurl_qq_2") ? jsonObject.getString("figureurl_qq_2") : "");
+                    if (StringUtils.isEmpty(userInfo.getFigureUrl())) {
+                        userInfo.setFigureUrl(jsonObject.containsKey("figureurl_qq_1") ? jsonObject.getString("figureurl_qq_1") : "");
                     }
                     userInfo.setSex(jsonObject.containsKey("gender") && gender.equals(jsonObject.getString("sex")) ? "1" : "0");
                     userInfo.setOpenid(openId);
