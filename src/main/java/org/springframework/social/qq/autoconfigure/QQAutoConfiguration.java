@@ -6,14 +6,15 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
-import org.springframework.boot.autoconfigure.social.SocialAutoConfigurerAdapter;
-import org.springframework.boot.autoconfigure.social.SocialWebAutoConfiguration;
-import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.core.env.Environment;
+import org.springframework.social.config.annotation.ConnectionFactoryConfigurer;
 import org.springframework.social.config.annotation.EnableSocial;
 import org.springframework.social.config.annotation.SocialConfigurerAdapter;
 import org.springframework.social.connect.Connection;
@@ -28,7 +29,7 @@ import org.springframework.social.qq.connect.QQConnectionFactory;
 @Configuration
 @ConditionalOnClass({ SocialConfigurerAdapter.class, QQConnectionFactory.class })
 @ConditionalOnProperty(prefix = "spring.social.qq", name = "app-id")
-@AutoConfigureBefore(SocialWebAutoConfiguration.class)
+@AutoConfigureBefore(SecurityAutoConfiguration.class)
 @AutoConfigureAfter(WebMvcAutoConfiguration.class)
 public class QQAutoConfiguration {
 
@@ -36,7 +37,7 @@ public class QQAutoConfiguration {
 	@EnableSocial
 	@EnableConfigurationProperties(QQProperties.class)
 	@ConditionalOnWebApplication
-	protected static class QQConfigurerAdapter extends SocialAutoConfigurerAdapter {
+	protected static class QQConfigurerAdapter extends SocialConfigurerAdapter {
 
 		private final QQProperties properties;
 
@@ -54,7 +55,11 @@ public class QQAutoConfiguration {
 		}
 
 		@Override
-		protected ConnectionFactory<?> createConnectionFactory() {
+		public void addConnectionFactories(ConnectionFactoryConfigurer configurer, Environment environment) {
+			configurer.addConnectionFactory(this.createConnectionFactory());
+		}
+
+		private ConnectionFactory<QQ> createConnectionFactory() {
 			return new QQConnectionFactory(this.properties.getAppId(),
 					this.properties.getAppSecret());
 		}
